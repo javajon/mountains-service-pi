@@ -14,6 +14,9 @@ spec:
       - name: pathToYamlFile
         description: The path to the yaml file to deploy within the git source
         default: deploy.yaml
+      - name: pathToDockerfile
+        description: The path to the Dockerfile to build
+        default: Dockerfile
       - name: imageUrl
         description: Url of image repository
         default: url

@@ -13,6 +13,9 @@ spec:
     - name: pathToYamlFile
       description: The path to the yaml file to deploy within the git source
       default: config.yaml
+    - name: pathToDockerfile
+      description: The path to the Dockerfile to build
+      default: $(resources.inputs.docker-source.path)/Dockerfile
     - name: imageUrl
       description: Url of image repository
       default: deploy_target
@@ -26,6 +29,8 @@ spec:
     params:
       - name: pathToContext
         value: "$(params.pathToContext)"
+      - name: pathToDockerfile
+        value: "$(params.pathToDockerfile)"
       - name: imageUrl
         value: "$(params.imageUrl)"
       - name: imageTag
