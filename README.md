@@ -14,7 +14,7 @@ The slimming of the Dockerfile was inspired by two projects.
 
 ## Running Instructions
 
-There are a few Dockerfiles that will package the Python microservice differently. They all can be run using the ./try.sh script.  
+There are a few Dockerfiles that will package the Python microservice differently. They all can be run using the ./try.sh script.
 
 `./try.sh bloated`
 `./try.sh slim`

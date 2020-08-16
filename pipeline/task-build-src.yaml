@@ -13,7 +13,7 @@ spec:
         default: .
       - name: pathToDockerfile
         description: The path to the Dockerfile to build
-        default: Dockerfile
+        default: Dockerfile-alpine
       - name: imageUrl
         description: value should be like - us.icr.io/test_namespace/builtImageApp
       - name: imageTag

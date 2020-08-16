@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/javajon/node-js-tekton
+      value: https://github.com/javajon/mountains-service-pi
