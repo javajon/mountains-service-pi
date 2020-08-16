@@ -18,7 +18,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 # Cache installed dependencies between builds
-COPY ./requirements ./requirements/
+COPY ./requirements/ ./requirements/
 RUN pip install -r ./requirements/${REQUIREMENTS}.txt --user
 
 # --------------------------------------
