@@ -1,0 +1,28 @@
+# Construct Python dependencies from requirements
+FROM python:3.8.5-slim as dependencies
+
+WORKDIR /app
+
+RUN apt-get update \
+ && apt-get install gcc=4:8.3.0-1 -y --no-install-recommends \
+ && apt-get clean
+
+COPY requirements/base.txt /app/requirements.txt
+
+RUN pip install --user -r requirements.txt
+COPY . .
+
+# Application container
+FROM python:3.8.5-slim
+
+LABEL scenario=python-pipelining
+
+WORKDIR /app
+
+COPY --from=dependencies /root/.local /root/.local
+COPY --from=dependencies /app/ /app/
+
+ENV PATH=/root/.local/bin:$PATH
+
+EXPOSE 8080
+ENTRYPOINT ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]
