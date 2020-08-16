@@ -14,8 +14,10 @@ spec:
       value: "src"
     - name: pathToYamlFile
       value: "deploy.yaml"
-    - name: "imageUrl"
+    - name: pathToDockerfile
+      default: $(resources.inputs.docker-source.path)/Dockerfile-alpine
+    - name: imageUrl
       value: "registry-docker-registry.kube-system:5000/mountains"
-    - name: "imageTag"
+    - name: imageTag
       value: "0.0.1"
   serviceAccountName: service-account

@@ -10,10 +10,10 @@ spec:
     params:
       - name: pathToContext
         description: The path to the build context, used by Kaniko - within the workspace
-        default: .
+        default: $(resources.inputs.docker-source.path)
       - name: pathToDockerfile
         description: The path to the Dockerfile to build
-        default: Dockerfile-alpine
+        default: $(resources.inputs.docker-source.path)/Dockerfile
       - name: imageUrl
         description: value should be like - us.icr.io/test_namespace/builtImageApp
       - name: imageTag
