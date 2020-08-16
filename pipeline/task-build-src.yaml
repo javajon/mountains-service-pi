@@ -13,7 +13,6 @@ spec:
         default: $(resources.inputs.docker-source.path)
       - name: pathToDockerfile
         description: The path to the Dockerfile to build
-        default: $(resources.inputs.docker-source.path)/Dockerfile
       - name: imageUrl
         description: value should be like - us.icr.io/test_namespace/builtImageApp
       - name: imageTag

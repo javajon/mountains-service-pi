@@ -15,7 +15,6 @@ spec:
       default: config.yaml
     - name: pathToDockerfile
       description: The path to the Dockerfile to build
-      default: $(resources.inputs.docker-source.path)/Dockerfile
     - name: imageUrl
       description: Url of image repository
       default: deploy_target

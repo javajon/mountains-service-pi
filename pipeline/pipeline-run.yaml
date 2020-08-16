@@ -11,13 +11,13 @@ spec:
         name: git
   params:
     - name: pathToContext
-      value: "src"
+      value: src
     - name: pathToYamlFile
-      value: "deploy.yaml"
+      value: deploy.yaml
     - name: pathToDockerfile
-      value: "$(resources.inputs.docker-source.path)/Dockerfile-alpine"
+      value: /workspace/git-source/Dockerfile-alpine
     - name: imageUrl
-      value: "registry-docker-registry.kube-system:5000/mountains"
+      value: registry-docker-registry.kube-system:5000/mountains
     - name: imageTag
       value: "0.0.1"
   serviceAccountName: service-account
