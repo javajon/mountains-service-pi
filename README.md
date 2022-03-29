@@ -18,7 +18,6 @@ There are a few Dockerfiles that will package the Python microservice differentl
 
 `./try.sh bloated`
 `./try.sh slim`
-`./try.sh alpine`
 
 ## References
 
