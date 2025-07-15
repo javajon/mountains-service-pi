@@ -35,12 +35,12 @@ spec:
               key: url
       script: |
         #!/bin/sh
-        echo "Updating deployment YAML with image: $(REGISTRY_URL)/$(params.imageUrl):$(params.imageTag)"
-        sed -i -e "s;IMAGE;$(REGISTRY_URL)/$(params.imageUrl):$(params.imageTag);g" \
-          "$(workspaces.source.path)/$(params.pathToContext)/$(params.pathToYamlFile)"
+        set -e
+        echo "Updating deployment image to ${REGISTRY_URL}/$(params.imageUrl):$(params.imageTag)"
+        sed -i -e "s;IMAGE;${REGISTRY_URL}/$(params.imageUrl):$(params.imageTag);g" $(workspaces.source.path)/$(params.pathToContext)/$(params.pathToYamlFile)
     - name: deploy-app
-      image: lachlanevenson/k8s-kubectl:latest
+      image: bitnami/kubectl:latest
       script: |
         #!/bin/sh
         echo "Deploying application..."
-        kubectl apply -f "$(workspaces.source.path)/$(params.pathToContext)/$(params.pathToYamlFile)"
+        kubectl apply -f $(workspaces.source.path)/$(params.pathToContext)/$(params.pathToYamlFile)
