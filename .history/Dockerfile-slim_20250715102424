@@ -1,10 +1,10 @@
 # Construct Python dependencies from requirements
-FROM python:3.13-slim as dependencies
+FROM python:3.8.5-slim as dependencies
 
 WORKDIR /app
 
 RUN apt-get update \
- && apt-get install gcc -y --no-install-recommends \
+ && apt-get install gcc=4:8.3.0-1 -y --no-install-recommends \
  && apt-get clean
 
 COPY requirements/base.txt /app/requirements.txt
@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir --user -r requirements.txt
 COPY . .
 
 # Application container
-FROM python:3.13-slim
+FROM python:3.8.5-slim
 
 LABEL scenario=python-pipelining
 

@@ -4,7 +4,7 @@ FROM python:3.13-slim as dependencies
 WORKDIR /app
 
 RUN apt-get update \
- && apt-get install gcc -y --no-install-recommends \
+ && apt-get install gcc=4:8.3.0-1 -y --no-install-recommends \
  && apt-get clean
 
 COPY requirements/base.txt /app/requirements.txt
