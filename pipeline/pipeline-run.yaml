@@ -1,23 +1,32 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: application-pipeline-run
 spec:
   pipelineRef:
     name: application-pipeline
-  resources:
-    - name: git-source
-      resourceRef:
-        name: git
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
   params:
+    - name: repo-url
+      value: https://github.com/javajon/mountains-service-pi
+    - name: revision
+      value: master
     - name: pathToContext
       value: .
     - name: pathToYamlFile
       value: deploy.yaml
     - name: pathToDockerfile
-      value: /workspace/git-source/Dockerfile-slim
+      value: Dockerfile-slim
     - name: imageUrl
-      value: registry-docker-registry.kube-system:5000/mountains
+      value: mountains
     - name: imageTag
       value: "0.0.1"
   serviceAccountName: service-account
