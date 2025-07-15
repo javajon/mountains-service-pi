@@ -1,4 +1,4 @@
 # Add any general base python dependencies here
 
-fastapi==0.61.0
-uvicorn==0.11.8
+fastapi>=0.104.0
+uvicorn>=0.24.0
