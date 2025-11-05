@@ -1,7 +1,8 @@
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 LABEL scenario=python-pipelining
 
+# Smell: not the correct folder, should be /app
 WORKDIR app
 
 COPY requirements/base.txt /app/requirements.txt
@@ -12,9 +13,8 @@ RUN apt-get update \
 
 RUN pip install -r /app/requirements.txt
 
-# && rm -rf /root/.cache/pip
-
 COPY . .
 
 EXPOSE 8080
+# Smell: not the correct form, should be ENTRYPOINT ["uvicorn", "app.main:app"...]
 ENTRYPOINT uvicorn app.main:app --reload --host 0.0.0.0 --port 8080
